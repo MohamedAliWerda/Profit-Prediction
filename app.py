@@ -467,10 +467,28 @@ def render_csv_batch(models: dict) -> None:
             )
         results["Predicted Profit"] = results.apply(_pred_row, axis=1)
 
+    # ── ROI calculations ──────────────────────────────────────────────────
+    if is_simple:
+        results["Total Investment ($)"] = results["R&D Spend"]
+    else:
+        results["Total Investment ($)"] = (
+            results["R&D Spend"] + results["Administration"] + results["Marketing Spend"]
+        )
+
+    results["ROI ($)"] = results["Predicted Profit"] - results["Total Investment ($)"]
+    results["ROI (%)"] = (
+        results["ROI ($)"] / results["Total Investment ($)"] * 100
+    )
+
     st.markdown("---")
     st.markdown("### 📊 Prediction Results")
     st.dataframe(
-        results.style.format({"Predicted Profit": "${:,.2f}"}),
+        results.style.format({
+            "Predicted Profit":    "${:,.2f}",
+            "Total Investment ($)": "${:,.2f}",
+            "ROI ($)":             "${:,.2f}",
+            "ROI (%)":             "{:.1f}%",
+        }),
         use_container_width=True,
     )
 
