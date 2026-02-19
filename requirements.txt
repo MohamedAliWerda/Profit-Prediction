@@ -9,4 +9,5 @@ plotly
 seaborn
 PyJWT
 python-dotenv
+bcrypt
 
