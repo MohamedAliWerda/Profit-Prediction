@@ -1,0 +1,10 @@
+{
+  "dalywerda05@gmail.com": {
+    "password_hash": "$2b$12$1FOIR5ssVMGWhB.URn41hOqDd9NfAdmcIqG4a5m883wBsG8DbMxSO",
+    "is_verified": true,
+    "verification_code": "067250",
+    "code_expires": 1771528559.246106,
+    "twofa_code": "",
+    "twofa_expires": 0.0
+  }
+}
